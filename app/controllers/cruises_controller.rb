@@ -5,7 +5,7 @@ class CruisesController < ApplicationController
   # GET /cruises
   # GET /cruises.json
   def index
-    @cruises = Cruise.all
+    @cruises = Cruise.search(params[:term])
   end
 
   # GET /cruises/1
@@ -72,6 +72,6 @@ class CruisesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cruise_params
-      params.require(:cruise).permit(:name, :ship_id)
+      params.require(:cruise).permit(:name, :ship_id, :term)
     end
 end
